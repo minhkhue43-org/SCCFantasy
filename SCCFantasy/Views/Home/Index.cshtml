@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    IEnumerable<PlayerModel> players = (IEnumerable<PlayerModel>)ViewData["Players"];
+}
+
+<h4> Product Lists - TEST </h4>
+
+<ejs-grid id="products-grid" allowPaging="true" allowSorting="true" dataSource="players">
+   @* <e-data-manager url="@dataUrl" adaptor="UrlAdaptor"></e-data-manager>*@
+    <e-grid-columns>
+        <e-grid-column field="Id" headerText="ID" isPrimaryKey="true" visible="true" width="120"></e-grid-column>
+
+        <e-grid-column field="FirstName" headerText="First Name" clipMode="EllipsisWithTooltip" width="200"></e-grid-column>
+
+        <e-grid-column field="LastName" headerText="Last Name" clipMode="EllipsisWithTooltip" width="200"></e-grid-column>
+
+        <e-grid-column field="ClubName" headerText="Club" clipMode="EllipsisWithTooltip" width="200"></e-grid-column>
+    </e-grid-columns>
+</ejs-grid>

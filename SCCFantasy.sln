@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCCFantasy", "SCCFantasy\SCCFantasy.csproj", "{9C316ED9-BDE4-486B-A488-1876975D5137}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCCFantasy.WebCore", "SCCFantasy.Services\SCCFantasy.WebCore.csproj", "{8DB5CC82-0573-416C-B998-217FF70625C0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9C316ED9-BDE4-486B-A488-1876975D5137}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C316ED9-BDE4-486B-A488-1876975D5137}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C316ED9-BDE4-486B-A488-1876975D5137}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C316ED9-BDE4-486B-A488-1876975D5137}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DB5CC82-0573-416C-B998-217FF70625C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DB5CC82-0573-416C-B998-217FF70625C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DB5CC82-0573-416C-B998-217FF70625C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DB5CC82-0573-416C-B998-217FF70625C0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8FA117AC-6826-4AFA-BE5A-E2272F60EC10}
+	EndGlobalSection
+EndGlobal
