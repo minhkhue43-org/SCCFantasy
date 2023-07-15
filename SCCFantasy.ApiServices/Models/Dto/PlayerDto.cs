@@ -16,6 +16,14 @@ namespace SCCFantasy.ApiServices.Models.Dto
 
         public string ClubName { get; set; }
 
-        public int Age { get; set; }
+        public int TeamId { get; set; }
+
+        public int TotalPoints { get; set; }
+
+        public int NowCost { get; set; }
+
+        public int PositionId { get; set; }
+
+        public decimal SelectedPercent { get; set; }
     }
 }

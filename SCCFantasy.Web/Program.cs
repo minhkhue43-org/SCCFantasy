@@ -1,4 +1,5 @@
 using Newtonsoft.Json.Serialization;
+using SCCFantasy.ApiServices.Api;
 using SCCFantasy.Services;
 using Syncfusion.Licensing;
 
@@ -13,6 +14,7 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
 
 builder.Services.AddScoped<IPlayerWebService, PlayerWebService>();
 builder.Services.AddScoped<IPlayerService, PlayerService>();
+builder.Services.AddScoped<IGeneralInformationApi, GeneralInformationApi>();
 
 var app = builder.Build();
 

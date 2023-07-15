@@ -8,8 +8,14 @@
 
         public string LastName { get; set; }
 
+        public string FullName => FirstName + " " + LastName;
+
         public string ClubName { get; set; }
 
-        public int Age { get; set; }
+        public decimal Price { get; set; }
+
+        public string PostionName { get; set; }
+
+        public decimal SelectedPercent { get; set; }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using SCCFantasy.ApiServices.Models.Dto;
+using SCCFantasy.Common.Enums;
+using SCCFantasy.Common.Extensions;
 using SCCFantasy.Models;
 
 namespace SCCFantasy.Services
@@ -31,8 +33,10 @@ namespace SCCFantasy.Services
                 Id = dto.Id,
                 FirstName = dto.FirstName,
                 LastName = dto.LastName,
-                ClubName = dto.ClubName,
-                Age = dto.Age
+                ClubName = ((Teams)dto.TeamId).GetDescription(),
+                Price = (decimal)(dto.NowCost/10.0),
+                PostionName = ((PlayerPositions)dto.PositionId).GetDescription(),
+                SelectedPercent = dto.SelectedPercent
             };
         }
     }
