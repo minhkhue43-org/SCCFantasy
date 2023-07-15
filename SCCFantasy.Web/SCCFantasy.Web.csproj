@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SCCFantasy.Services\SCCFantasy.WebCore.csproj" />
+    <ProjectReference Include="..\SCCFantasy.Services\SCCFantasy.Services.csproj" />
   </ItemGroup>
 
 </Project>

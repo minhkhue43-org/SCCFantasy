@@ -1,15 +1,15 @@
-﻿using SCCFantasy.WebCore.Models;
+﻿using SCCFantasy.ApiServices.Models.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SCCFantasy.WebCore.Players
+namespace SCCFantasy.Services
 {
     public interface IPlayerService
     {
-        Task<List<Player>> GetPlayers();
+        Task<List<PlayerDto>> GetPlayers();
     }
 
     public class PlayerService : IPlayerService
@@ -19,11 +19,11 @@ namespace SCCFantasy.WebCore.Players
                 
         }
 
-        public async Task<List<Player>> GetPlayers()
+        public async Task<List<PlayerDto>> GetPlayers()
         {
-            var players = new List<Player>();
+            var players = new List<PlayerDto>();
 
-            players.Add(new Player
+            players.Add(new PlayerDto
             {
                 Id = 1,
                 FirstName = "Minh Khue",

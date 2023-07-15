@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SCCFantasy.Services.Common
+namespace SCCFantasy.ApiServices.Common
 {
     public class CommonService
     {
