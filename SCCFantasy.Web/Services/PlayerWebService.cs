@@ -36,8 +36,19 @@ namespace SCCFantasy.Services
                 ClubName = ((Teams)dto.TeamId).GetDescription(),
                 Price = (decimal)(dto.NowCost/10.0),
                 PostionName = ((PlayerPositions)dto.PositionId).GetDescription(),
-                SelectedPercent = dto.SelectedPercent
+                SelectedPercent = dto.SelectedPercent,
+                NextOpponents = GetNextOpponentClub(dto.NextOpponentTeamIds)
             };
+        }
+
+        private string GetNextOpponentClub(int[] teamIds)
+        {
+            if (!teamIds.Any())
+            {
+                return string.Empty;
+            }
+
+            return teamIds.Select(x => ((Teams)x).GetDescription()).Aggregate((m,n) => m + ", " + n);
         }
     }
 }

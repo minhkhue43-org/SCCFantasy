@@ -1,4 +1,5 @@
 ﻿using SCCFantasy.ApiServices.Models.Api;
+using SCCFantasy.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace SCCFantasy.ApiServices.Api
 
     public class GeneralInformationApi : IGeneralInformationApi
     {
-        private readonly string apiUrl = "https://fantasy.premierleague.com/api/bootstrap-static/";
+        private readonly string apiUrl = $"{GlobalConstants.ApiPrefix}/bootstrap-static/";
 
         public async Task<BoostrapStaticApiModel> GetGeneralInformation()
         {
