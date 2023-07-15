@@ -1,6 +1,5 @@
 using Newtonsoft.Json.Serialization;
 using SCCFantasy.Services;
-using SCCFantasy.WebCore.Players;
 using Syncfusion.Licensing;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,7 +16,17 @@ builder.Services.AddScoped<IPlayerService, PlayerService>();
 
 var app = builder.Build();
 
-SyncfusionLicenseProvider.RegisterLicense(Environment.GetEnvironmentVariable("SYNCFUSION_KEY"));
+var syncfusionFileKeyPath = Environment.CurrentDirectory + "\\SyncfusionKey.txt";
+
+if (File.Exists(syncfusionFileKeyPath))
+{
+    var syncfusionKey = File.ReadAllText(syncfusionFileKeyPath);
+    SyncfusionLicenseProvider.RegisterLicense(syncfusionKey);
+}
+else
+{
+    SyncfusionLicenseProvider.RegisterLicense(Environment.GetEnvironmentVariable("SYNCFUSION_KEY"));
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

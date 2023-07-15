@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SCCFantasy.WebCore.Models
+namespace SCCFantasy.ApiServices.Models.Dto
 {
-    public class Player
+    public class PlayerDto
     {
         public int Id { get; set; }
 

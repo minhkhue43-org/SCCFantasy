@@ -1,6 +1,5 @@
-﻿using SCCFantasy.Models;
-using SCCFantasy.WebCore.Models;
-using SCCFantasy.WebCore.Players;
+﻿using SCCFantasy.ApiServices.Models.Dto;
+using SCCFantasy.Models;
 
 namespace SCCFantasy.Services
 {
@@ -25,7 +24,7 @@ namespace SCCFantasy.Services
             return players.Select(x => ToPlayerModel(x));
         }
 
-        private PlayerModel ToPlayerModel(Player dto)
+        private PlayerModel ToPlayerModel(PlayerDto dto)
         {
             return new PlayerModel 
             { 
