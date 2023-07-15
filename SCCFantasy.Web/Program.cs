@@ -15,6 +15,7 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
 builder.Services.AddScoped<IPlayerWebService, PlayerWebService>();
 builder.Services.AddScoped<IPlayerService, PlayerService>();
 builder.Services.AddScoped<IGeneralInformationApi, GeneralInformationApi>();
+builder.Services.AddScoped<IFixturesApi, FixturesApi>();
 
 var app = builder.Build();
 

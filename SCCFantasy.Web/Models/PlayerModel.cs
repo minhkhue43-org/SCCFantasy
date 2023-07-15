@@ -17,5 +17,7 @@
         public string PostionName { get; set; }
 
         public decimal SelectedPercent { get; set; }
+
+        public string NextOpponents { get; set; }
     }
 }
