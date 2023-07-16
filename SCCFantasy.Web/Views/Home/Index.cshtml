@@ -1,4 +1,6 @@
-﻿@{
+﻿@using SCCFantasy.Common.Enums;
+
+@{
     ViewData["Title"] = "Home Page";
     IEnumerable<PlayerModel> players = (IEnumerable<PlayerModel>)ViewData["Players"];
     var pageSizes = GridHelper.DefaultPageSizes();
@@ -6,7 +8,7 @@
 
 <h4> Players List</h4>
 
-<ejs-grid id="products-grid" allowPaging="true" allowSorting="true" dataSource="players" allowFiltering="true">
+<ejs-grid id="players-grid" allowPaging="true" allowSorting="true" dataSource="players" allowFiltering="true">
    @* <e-data-manager url="@dataUrl" adaptor="UrlAdaptor"></e-data-manager>*@
     <e-grid-pagesettings pageSize="10" pageSizes="@pageSizes"></e-grid-pagesettings>
     <e-grid-filterSettings type="Excel"></e-grid-filterSettings>
@@ -15,7 +17,7 @@
 
         <e-grid-column field="FullName" headerText="Name" clipMode="EllipsisWithTooltip" width="200"></e-grid-column>
 
-        <e-grid-column field="PostionName" headerText="Postion" clipMode="EllipsisWithTooltip" width="120"></e-grid-column>
+        <e-grid-column field="PositionName" headerText="Postion" clipMode="EllipsisWithTooltip" template="#positionTemplate" width="120"></e-grid-column>
 
         <e-grid-column field="ClubName" headerText="Club" clipMode="EllipsisWithTooltip" width="120"></e-grid-column>
 
@@ -26,3 +28,21 @@
         <e-grid-column field="NextOpponents" headerText="Next Opponent" clipMode="EllipsisWithTooltip" width="120"></e-grid-column>
     </e-grid-columns>
 </ejs-grid>
+
+<script id="positionTemplate" type="text/x-template">
+    ${renderPositionTemplate(data.PositionId, data.PositionName)}
+</script>
+
+<script type="text/javascript">
+    function renderPositionTemplate(positionId, positionName) {
+        if (positionId == @((int)PlayerPositions.GKP)) {
+            return "<span class='text-warning'>" + positionName + "</span>";
+        } else if (positionId == @((int)PlayerPositions.DEF)) {
+            return "<span class='text-danger'>" + positionName + "</span>";
+        } else if (positionId == @((int)PlayerPositions.MID)) {
+            return "<span class='text-success'>" + positionName + "</span>";
+        }else{
+            return "<span class='text-primary'>" + positionName + "</span>";
+        }
+    }
+</script>
