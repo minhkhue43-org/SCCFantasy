@@ -14,7 +14,9 @@
 
         public decimal Price { get; set; }
 
-        public string PostionName { get; set; }
+        public string PositionName { get; set; }
+
+        public int PositionId { get; set; }
 
         public decimal SelectedPercent { get; set; }
 

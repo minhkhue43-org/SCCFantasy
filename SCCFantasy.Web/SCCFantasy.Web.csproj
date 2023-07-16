@@ -10,6 +10,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.20" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Syncfusion.EJ2.AspNet.Core" Version="21.2.10" />
+    <PackageReference Include="Syncfusion.EJ2.JavaScript" Version="21.2.10" />
     <PackageReference Include="Syncfusion.Licensing" Version="21.2.10" />
   </ItemGroup>
 
