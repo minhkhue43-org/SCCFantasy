@@ -1,4 +1,6 @@
-﻿namespace SCCFantasy.Models
+﻿using SCCFantasy.Web.Models;
+
+namespace SCCFantasy.Models
 {
     public class PlayerModel
     {
@@ -21,5 +23,7 @@
         public decimal SelectedPercent { get; set; }
 
         public string NextOpponents { get; set; }
+
+        public IEnumerable<PlayerFixtureModel> NextFivePlayerFixtures { get;set; }
     }
 }

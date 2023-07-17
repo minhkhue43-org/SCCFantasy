@@ -12,6 +12,7 @@ namespace SCCFantasy.ApiServices.Api
     public interface IFixturesApi
     {
         Task<List<FixturesApiModel>> GetFixturesByEventId(int eventId);
+        Task<List<FixturesApiModel>> GetAllFixtures();
     }
 
     public class FixturesApi : IFixturesApi
@@ -28,6 +29,22 @@ namespace SCCFantasy.ApiServices.Api
             string _content = await _response.Content.ReadAsStringAsync();
 
             return JsonSerializer.Deserialize<List<FixturesApiModel>>(_content);
+        }
+
+        public async Task<List<FixturesApiModel>> GetAllFixtures()
+        {
+            using HttpClient _client = new HttpClient();
+
+            HttpResponseMessage _response = await _client.GetAsync($"{allFixturesApiUrl}");
+
+            string _content = await _response.Content.ReadAsStringAsync();
+
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+
+            return JsonSerializer.Deserialize<List<FixturesApiModel>>(_content, options);
         }
     }
 }

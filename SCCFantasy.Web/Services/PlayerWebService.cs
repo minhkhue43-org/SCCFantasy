@@ -2,6 +2,7 @@
 using SCCFantasy.Common.Enums;
 using SCCFantasy.Common.Extensions;
 using SCCFantasy.Models;
+using SCCFantasy.Web.Models;
 
 namespace SCCFantasy.Services
 {
@@ -38,7 +39,8 @@ namespace SCCFantasy.Services
                 PositionId = dto.PositionId,
                 PositionName = ((PlayerPositions)dto.PositionId).GetDescription(),
                 SelectedPercent = dto.SelectedPercent,
-                NextOpponents = GetNextOpponentClub(dto.NextOpponentTeamIds)
+                NextOpponents = GetNextOpponentClub(dto.NextOpponentTeamIds),
+                NextFivePlayerFixtures = dto.NextFiveFixture.OrderBy(x => x.Event).Select(x => ToPlayerFixtureModel(x))
             };
         }
 
@@ -50,6 +52,16 @@ namespace SCCFantasy.Services
             }
 
             return teamIds.Select(x => ((Teams)x).GetDescription()).Aggregate((m,n) => m + ", " + n);
+        }
+
+        private PlayerFixtureModel ToPlayerFixtureModel(PlayerFixtureDto dto)
+        {
+            return new PlayerFixtureModel 
+            {
+                Event = dto.Event,
+                OpponentTeamName = ((Teams)dto.OpponentTeamId).ToString(),
+                Difficult = dto.Difficult
+            };
         }
     }
 }

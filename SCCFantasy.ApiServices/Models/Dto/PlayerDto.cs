@@ -27,5 +27,7 @@ namespace SCCFantasy.ApiServices.Models.Dto
         public decimal SelectedPercent { get; set; }
 
         public int[] NextOpponentTeamIds { get; set; }
+
+        public IEnumerable<PlayerFixtureDto> NextFiveFixture { get; set; }
     }
 }
