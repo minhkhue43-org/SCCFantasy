@@ -8,29 +8,35 @@
 
 <h4> Players List</h4>
 
-<ejs-grid id="players-grid" allowPaging="true" allowSorting="true" dataSource="players" allowFiltering="true">
+<ejs-grid id="players-grid" allowPaging="true" allowSorting="true" dataSource="players" showColumnChooser="true" toolbar="@( new List<string>() { "ColumnChooser"})" allowFiltering="true">
    @* <e-data-manager url="@dataUrl" adaptor="UrlAdaptor"></e-data-manager>*@
     <e-grid-pagesettings pageSize="10" pageSizes="@pageSizes"></e-grid-pagesettings>
     <e-grid-filterSettings type="Excel"></e-grid-filterSettings>
     <e-grid-columns>
-        <e-grid-column field="Id" headerText="ID" isPrimaryKey="true" visible="true" width="100"></e-grid-column>
+        <e-grid-column field="Id" headerText="ID" isPrimaryKey="true" visible="true" width="60"></e-grid-column>
 
-        <e-grid-column field="FullName" headerText="Name" clipMode="EllipsisWithTooltip" width="200"></e-grid-column>
+        <e-grid-column field="FullName" headerText="Name" clipMode="EllipsisWithTooltip" width="150"></e-grid-column>
 
-        <e-grid-column field="PositionName" headerText="Postion" clipMode="EllipsisWithTooltip" template="#positionTemplate" width="120"></e-grid-column>
+        <e-grid-column field="PositionName" headerText="Postion" clipMode="EllipsisWithTooltip" template="#positionTemplate" width="100"></e-grid-column>
 
-        <e-grid-column field="ClubName" headerText="Club" clipMode="EllipsisWithTooltip" width="120"></e-grid-column>
+        <e-grid-column field="ClubName" headerText="Club" clipMode="EllipsisWithTooltip" width="100"></e-grid-column>
 
-        <e-grid-column field="Price" headerText="Price" clipMode="EllipsisWithTooltip" width="100"></e-grid-column>
+        <e-grid-column field="Price" headerText="Price" clipMode="EllipsisWithTooltip" width="70"></e-grid-column>
 
-        <e-grid-column field="SelectedPercent" headerText="Selected (%)" clipMode="EllipsisWithTooltip" width="120"></e-grid-column>
+        <e-grid-column field="SelectedPercent" headerText="Selected (%)" clipMode="EllipsisWithTooltip" width="100"></e-grid-column>
 
         <e-grid-column field="NextOpponents" headerText="Next Opponent" clipMode="EllipsisWithTooltip" width="120"></e-grid-column>
+
+        <e-grid-column headerText="Next 5 Fixtures" template="#nexFiveFixturesTemplate" clipMode="EllipsisWithTooltip" width="200"></e-grid-column>
     </e-grid-columns>
 </ejs-grid>
 
 <script id="positionTemplate" type="text/x-template">
     ${renderPositionTemplate(data.PositionId, data.PositionName)}
+</script>
+
+<script id="nexFiveFixturesTemplate" type="text/x-template">
+    ${renderNexFiveFixtures(data.NextFivePlayerFixtures)}
 </script>
 
 <script type="text/javascript">
@@ -45,4 +51,27 @@
             return "<span class='text-primary'>" + positionName + "</span>";
         }
     }
+
+    function renderNexFiveFixtures(nextFivePlayerFixtures) {
+        var nexFiveFixturesHtmlStr = "";
+
+        nextFivePlayerFixtures.forEach(function(item){
+            if (item.Difficult < 3) {
+                nexFiveFixturesHtmlStr = nexFiveFixturesHtmlStr + "<span class='text-success'>" + item.OpponentTeamName + "</span>";
+            } else if (item.Difficult == 3) { 
+                nexFiveFixturesHtmlStr = nexFiveFixturesHtmlStr + "<span class='text-warning'>" + item.OpponentTeamName + "</span>";
+            } else if (item.Difficult == 4) {
+                nexFiveFixturesHtmlStr = nexFiveFixturesHtmlStr + "<span class='text-danger'>" + item.OpponentTeamName + "</span>";
+            } else {
+                nexFiveFixturesHtmlStr = nexFiveFixturesHtmlStr + "<span class='text-very-difficult'>" + item.OpponentTeamName + "</span>";
+            }
+
+            if (item.Event != 5) {
+                nexFiveFixturesHtmlStr = nexFiveFixturesHtmlStr + ", ";
+            }
+        });
+
+        return nexFiveFixturesHtmlStr;
+    }
+
 </script>

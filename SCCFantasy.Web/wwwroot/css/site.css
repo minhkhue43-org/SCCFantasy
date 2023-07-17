@@ -16,3 +16,7 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.text-very-difficult {
+    color: rgb(128, 7, 45);
+}
