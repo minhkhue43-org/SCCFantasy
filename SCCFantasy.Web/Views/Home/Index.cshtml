@@ -54,24 +54,32 @@
 
     function renderNexFiveFixtures(nextFivePlayerFixtures) {
         var nexFiveFixturesHtmlStr = "";
+        var lastEventId = Math.max(...nextFivePlayerFixtures.map(x => x.Event));
 
         nextFivePlayerFixtures.forEach(function(item){
-            if (item.Difficult < 3) {
+            if (item.Difficult < @((int)Difficulties.Normal)) 
+            {
                 nexFiveFixturesHtmlStr = nexFiveFixturesHtmlStr + "<span class='text-success'>" + item.OpponentTeamName + "</span>";
-            } else if (item.Difficult == 3) { 
+            } 
+            else if (item.Difficult == @((int)Difficulties.Normal)) 
+            {
                 nexFiveFixturesHtmlStr = nexFiveFixturesHtmlStr + "<span class='text-warning'>" + item.OpponentTeamName + "</span>";
-            } else if (item.Difficult == 4) {
+            } 
+            else if (item.Difficult == @((int)Difficulties.Hard)) 
+            {
                 nexFiveFixturesHtmlStr = nexFiveFixturesHtmlStr + "<span class='text-danger'>" + item.OpponentTeamName + "</span>";
-            } else {
+            } 
+            else 
+            {
                 nexFiveFixturesHtmlStr = nexFiveFixturesHtmlStr + "<span class='text-very-difficult'>" + item.OpponentTeamName + "</span>";
             }
 
-            if (item.Event != 5) {
+            if (item.Event != lastEventId) 
+            {
                 nexFiveFixturesHtmlStr = nexFiveFixturesHtmlStr + ", ";
             }
         });
 
         return nexFiveFixturesHtmlStr;
     }
-
 </script>
