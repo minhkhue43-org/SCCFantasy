@@ -6,9 +6,12 @@
     <title>@ViewData["Title"] - SCCFantasy</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/SCCFantasy.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/21.2.10/bootstrap5.css" />
-    <script src="https://cdn.syncfusion.com/ej2/21.2.10/dist/ej2.min.js"></script>
+    <link rel="stylesheet" href="~/lib/ej2/bootstrap5.css" />
+    <link rel="stylesheet" href="~/lib/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="~/lib/fontawesome/css/fontawesome.css">
+    <link rel="stylesheet" href="~/lib/fontawesome/css/brands.css">
+    <link rel="stylesheet" href="~/lib/fontawesome/css/solid.css">
+   
 </head>
 <body>
     <header>
@@ -38,6 +41,8 @@
         </main>
     </div>
 
+    <div id="toast-container"></div>
+
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2023 - SCCFantasy - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
@@ -46,6 +51,9 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/common.js" asp-append-version="true"></script>
+    <script src="~/lib/ej2/ej2.min.js"></script>
+    <script src="~/lib/sweetalert2/sweetalert2.min.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
     <ejs-scripts></ejs-scripts>
 </body>
