@@ -34,6 +34,7 @@ namespace SCCFantasy.Services
                 Id = dto.Id,
                 FirstName = dto.FirstName,
                 LastName = dto.LastName,
+                ClubId = dto.TeamId,
                 ClubName = ((Teams)dto.TeamId).GetDescription(),
                 Price = (decimal)(dto.NowCost/10.0),
                 PositionId = dto.PositionId,

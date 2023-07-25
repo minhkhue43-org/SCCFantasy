@@ -14,6 +14,8 @@ namespace SCCFantasy.Models
 
         public string ClubName { get; set; }
 
+        public int ClubId { get; set; }
+
         public decimal Price { get; set; }
 
         public string PositionName { get; set; }
