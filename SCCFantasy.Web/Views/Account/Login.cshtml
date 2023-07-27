@@ -1,0 +1,38 @@
+﻿@model LoginViewModel;
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="d-flex justify-content-center">
+    <div>
+        <h2>@ViewData["Title"]</h2>
+
+        <div class="col-md-12 mt-3">
+            <form asp-controller="Account" asp-action="Login" method="post">
+                <div class="form-group mb-3 d-flex">
+                    <div class="col-md-4 me-2">
+                        <label class="form-control" for="username">Username :</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" id="username" name="UserName" required>
+                    </div>
+                </div>
+
+                <div class="form-group mb-3 d-flex">
+                    <div class="col-md-4 me-2">
+                        <label class="form-control" for="password">Password :</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input class="form-control" type="password" id="password" name="Password" required>
+                    </div>
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="button" class="btn btn-secondary">Register</button>
+            </form>
+        </div>
+    </div>
+
+</div>

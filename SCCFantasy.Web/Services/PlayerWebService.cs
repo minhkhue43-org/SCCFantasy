@@ -1,7 +1,6 @@
 ﻿using SCCFantasy.ApiServices.Models.Dto;
 using SCCFantasy.Common.Enums;
 using SCCFantasy.Common.Extensions;
-using SCCFantasy.Models;
 using SCCFantasy.Web.Models;
 
 namespace SCCFantasy.Services

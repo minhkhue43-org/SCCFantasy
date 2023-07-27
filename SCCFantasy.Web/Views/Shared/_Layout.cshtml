@@ -27,9 +27,33 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+
+                        @if (Context.Session.GetString("UserName") != null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Team" asp-action="Index">My Team</a>
+                            </li>
+                        }
+                    </ul>
+
+                    <ul class="navbar-nav flex-grow-2">
+                        @if (Context.Session.GetString("UserName") != null)
+                        {
+                            <li class="nav-item">
+                                <span class="nav-link text-dark">Hello <span class="text-danger"> 
+                                    @Context.Session.GetString("UserName")</span></span>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
@@ -45,7 +69,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - SCCFantasy - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2023 - SCCFantasy
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
