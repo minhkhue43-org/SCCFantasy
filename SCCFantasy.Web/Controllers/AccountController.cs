@@ -20,6 +20,32 @@ namespace SCCFantasy.Web.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult Register()
+        {
+            if (HttpContext.Session.GetString("UserName") == null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Register(RegisterViewModel model)
+        {
+            if (HttpContext.Session.GetString("UserName") == null)
+            {
+                return RedirectToAction("UnderConstruction");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Team");
+            }
+        }
+
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
@@ -40,6 +66,8 @@ namespace SCCFantasy.Web.Controllers
 
             return View();
         }
+
+
 
         public ActionResult Logout()
         {

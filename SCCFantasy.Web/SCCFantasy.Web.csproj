@@ -19,4 +19,8 @@
     <ProjectReference Include="..\SCCFantasy.Services\SCCFantasy.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\theme\sneat\" />
+  </ItemGroup>
+
 </Project>
