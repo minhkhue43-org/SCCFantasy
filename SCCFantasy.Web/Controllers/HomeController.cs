@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SCCFantasy.Models;
+using SCCFantasy.Web.Models;
 using SCCFantasy.Services;
+using SCCFantasy.Web.Controllers;
 using System.Diagnostics;
 
 namespace SCCFantasy.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IPlayerWebService _playerWebService;
@@ -23,12 +24,11 @@ namespace SCCFantasy.Controllers
             return View();
         }
 
-
-
-        public IActionResult Privacy()
+        public ActionResult Test()
         {
             return View();
         }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

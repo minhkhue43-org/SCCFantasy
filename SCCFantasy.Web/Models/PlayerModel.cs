@@ -1,6 +1,4 @@
-﻿using SCCFantasy.Web.Models;
-
-namespace SCCFantasy.Models
+﻿namespace SCCFantasy.Web.Models
 {
     public class PlayerModel
     {

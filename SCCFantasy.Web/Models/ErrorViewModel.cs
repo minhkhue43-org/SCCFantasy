@@ -1,4 +1,4 @@
-namespace SCCFantasy.Models
+namespace SCCFantasy.Web.Models
 {
     public class ErrorViewModel
     {

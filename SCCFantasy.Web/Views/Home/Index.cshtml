@@ -6,70 +6,34 @@
     var pageSizes = GridHelper.DefaultPageSizes();
 }
 
-<h4> Players List</h4>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title text-primary"> Players List</h5>
 
-<ejs-grid id="players-grid" allowPaging="true" allowSorting="true" dataSource="players" showColumnChooser="true" toolbar="@( new List<string>() { "ColumnChooser"})" allowFiltering="true">
-   @* <e-data-manager url="@dataUrl" adaptor="UrlAdaptor"></e-data-manager>*@
-    <e-grid-pagesettings pageSize="10" pageSizes="@pageSizes"></e-grid-pagesettings>
-    <e-grid-filterSettings type="Excel"></e-grid-filterSettings>
-    <e-grid-columns>
-        <e-grid-column field="Id" headerText="ID" isPrimaryKey="true" visible="false" width="60"></e-grid-column>
+        <ejs-grid id="players-grid" allowPaging="true" allowSorting="true" dataSource="players" showColumnChooser="true" toolbar="@( new List<string>() { "ColumnChooser"})" allowFiltering="true">
+            @* <e-data-manager url="@dataUrl" adaptor="UrlAdaptor"></e-data-manager>*@
+            <e-grid-pagesettings pageSize="10" pageSizes="@pageSizes"></e-grid-pagesettings>
+            <e-grid-filterSettings type="Excel"></e-grid-filterSettings>
+            <e-grid-columns>
+                <e-grid-column field="Id" headerText="ID" isPrimaryKey="true" visible="true" width="60"></e-grid-column>
 
-        <e-grid-column headerText="" template="#playersActionButon" width="60"></e-grid-column>
+                <e-grid-column field="FullName" headerText="Name" clipMode="EllipsisWithTooltip" width="150"></e-grid-column>
 
-        <e-grid-column field="FullName" headerText="Name" clipMode="EllipsisWithTooltip" width="150"></e-grid-column>
+                <e-grid-column field="PositionName" headerText="Postion" clipMode="EllipsisWithTooltip" template="#positionTemplate" width="100"></e-grid-column>
 
-        <e-grid-column field="PositionName" headerText="Postion" clipMode="EllipsisWithTooltip" template="#positionTemplate" width="100"></e-grid-column>
+                <e-grid-column field="ClubName" headerText="Club" clipMode="EllipsisWithTooltip" width="100"></e-grid-column>
 
-        <e-grid-column field="ClubName" headerText="Club" clipMode="EllipsisWithTooltip" width="100"></e-grid-column>
+                <e-grid-column field="Price" headerText="Price" clipMode="EllipsisWithTooltip" width="70"></e-grid-column>
 
-        <e-grid-column field="Price" headerText="Price" clipMode="EllipsisWithTooltip" width="70"></e-grid-column>
+                <e-grid-column field="SelectedPercent" headerText="Selected (%)" clipMode="EllipsisWithTooltip" width="100"></e-grid-column>
 
-        <e-grid-column field="SelectedPercent" headerText="Selected (%)" clipMode="EllipsisWithTooltip" width="100"></e-grid-column>
+                <e-grid-column field="NextOpponents" headerText="Next Opponent" clipMode="EllipsisWithTooltip" width="120"></e-grid-column>
 
-        <e-grid-column field="NextOpponents" headerText="Next Opponent" clipMode="EllipsisWithTooltip" width="120"></e-grid-column>
-
-        <e-grid-column headerText="Next 5 Fixtures" template="#nexFiveFixturesTemplate" clipMode="EllipsisWithTooltip" width="200"></e-grid-column>
-    </e-grid-columns>
-</ejs-grid>
-
-<hr class="mt-4" />
-
-<div class="d-flex justify-content-between mb-2">
-    <h4> My team </h4>
-    <button type="button" id="save-my-team" class="btn btn-sm btn-primary"> <i class="fa-solid fa-floppy-disk me-2"></i> Save </button>
+                <e-grid-column headerText="Next 5 Fixtures" template="#nexFiveFixturesTemplate" clipMode="EllipsisWithTooltip" width="200"></e-grid-column>
+            </e-grid-columns>
+        </ejs-grid>
+    </div>
 </div>
-
-<ejs-grid id="my-team-grid" allowPaging="false" allowSorting="false" showColumnChooser="true" toolbar="@( new List<string>() { "ColumnChooser"})" allowFiltering="true">
-   @* <e-grid-pagesettings pageSize="10" pageSizes="@pageSizes"></e-grid-pagesettings>*@
-    <e-grid-filterSettings type="Excel"></e-grid-filterSettings>
-    <e-grid-aggregates>
-        <e-grid-aggregate>
-            <e-aggregate-columns>
-                <e-aggregate-column field="Price" type="Sum" format="N2" footerTemplate="Total : ${Sum}"></e-aggregate-column>
-            </e-aggregate-columns>
-        </e-grid-aggregate>
-    </e-grid-aggregates>
-    <e-grid-columns>
-        <e-grid-column field="Id" headerText="ID" isPrimaryKey="true" visible="false" width="60"></e-grid-column>
-
-        <e-grid-column headerText="" template="#myTeamActionButon" width="60"></e-grid-column>
-
-        <e-grid-column field="FullName" headerText="Name" clipMode="EllipsisWithTooltip" width="150"></e-grid-column>
-
-        <e-grid-column field="PositionName" headerText="Postion" clipMode="EllipsisWithTooltip" template="#positionTemplate" width="100"></e-grid-column>
-
-        <e-grid-column field="ClubName" headerText="Club" clipMode="EllipsisWithTooltip" width="100"></e-grid-column>
-
-        <e-grid-column field="Price" headerText="Price" clipMode="EllipsisWithTooltip" width="70"></e-grid-column>
-
-       @* <e-grid-column field="SelectedPercent" headerText="Selected (%)" clipMode="EllipsisWithTooltip" width="100"></e-grid-column>*@
-
-        <e-grid-column field="NextOpponents" headerText="Next Opponent" clipMode="EllipsisWithTooltip" width="120"></e-grid-column>
-
-        <e-grid-column headerText="Next 5 Fixtures" template="#nexFiveFixturesTemplate" clipMode="EllipsisWithTooltip" width="200"></e-grid-column>
-    </e-grid-columns>
-</ejs-grid>
 
 <script id="positionTemplate" type="text/x-template">
     ${renderPositionTemplate(data.PositionId, data.PositionName)}
@@ -78,15 +42,6 @@
 <script id="nexFiveFixturesTemplate" type="text/x-template">
     ${renderNexFiveFixtures(data.NextFivePlayerFixtures)}
 </script>
-
-<script id="playersActionButon" type="text/x-template">
-    ${renderPlayersActionButon(data.Id)}
-</script>
-
-<script id="myTeamActionButon" type="text/x-template">
-    ${renderMyTeamActionButon(data.Id)}
-</script>
-
 
 <script type="text/javascript">
     function renderPositionTemplate(positionId, positionName) {
@@ -131,110 +86,4 @@
 
         return nexFiveFixturesHtmlStr;
     }
-
-    function renderPlayersActionButon(id){
-        var myTeamGrid = document.getElementById("my-team-grid").ej2_instances[0];
-        var player = myTeamGrid.dataSource.find(x => x.Id == id);
-        if (player == null) {
-            return "<button class='btn btn-sm' data-action='add-player' data-id='" + id + "'><i class='fa-solid fa-plus text-success'></i></button>";
-        }else{
-            return "";
-        }
-    }
-
-    function renderMyTeamActionButon(id){
-        return "<button class='btn btn-sm' data-action='remove-player' data-id='" + id + "'><i class='fa-solid fa-minus text-danger'></i></button>";
-    }
-
 </script>
-
-@section Scripts{
-    <script>
-        var toastService = new ToastService();
-        var myTeamGrid; var playersGrid;
-
-        $(document).ready(function () {
-            playersGrid = document.getElementById("players-grid").ej2_instances[0];
-            myTeamGrid = document.getElementById("my-team-grid").ej2_instances[0];
-
-            var myTeamInLocalStorage = localStorage.getItem("SCCFantasy_MyTeam");
-            var myTeamIds = [];
-            if (myTeamInLocalStorage != null) {
-                myTeamIds = myTeamInLocalStorage.split(',').map(x => parseInt(x));
-
-                myTeamIds.forEach(function(playerId){
-                    var player = playersGrid.dataSource.find(x => x.Id == playerId);
-                    myTeamGrid.dataSource.push(player);
-                });
-
-                playersGrid.refresh();
-                myTeamGrid.refresh();
-            }
-        });
-
-        $("#players-grid").on('click', '.btn[data-action=add-player]', function (e) {
-            var playerId = parseInt(e.currentTarget.getAttribute('data-id'));
-            var player = playersGrid.dataSource.find(x => x.Id == playerId);
-
-            if (maxPlayersCountValidation(player) == false) {
-                return;
-            }
-
-            myTeamGrid.dataSource.push(player);
-            myTeamGrid.dataSource = myTeamGrid.dataSource.sort(function (a, b) { return a.PositionId - b.PositionId });
-            myTeamGrid.refresh();
-            playersGrid.refresh();
-        });
-
-        $("#my-team-grid").on('click', '.btn[data-action=remove-player]', function (e) {
-            var playerId = parseInt(e.currentTarget.getAttribute('data-id'));
-            var player = myTeamGrid.dataSource.find(x => x.Id == playerId);
-            var index = myTeamGrid.dataSource.indexOf(player);
-
-            myTeamGrid.dataSource.splice(index, 1);
-            myTeamGrid.refresh();
-            playersGrid.refresh();
-        });
-
-        $("#save-my-team").on('click', function(){
-            var dataSource = myTeamGrid.dataSource;
-            localStorage.setItem("SCCFantasy_MyTeam", dataSource.map(x => x.Id));
-            toastService.success(__messages.ModifySuccessfully);
-        });
-
-        function maxPlayersCountValidation(player) {
-            var isValid = true;
-
-            var playerPositionId = player.PositionId;
-            var maxCount = __maxPlayerSetting.find(x => x.positionId == playerPositionId).maxCount;
-            var currentCount = myTeamGrid.dataSource.filter(x => x.PositionId == playerPositionId).length;
-
-            if (currentCount >= maxCount) {
-                Swal.fire({
-                    title: 'Warning',
-                    text: 'Cannot have more than ' + maxCount + ' ' + player.PositionName,
-                    icon: 'warning',
-                    confirmButtonText: 'Ok'
-                });
-
-                return false;
-            }
-
-            var playerClubId = player.ClubId;
-            var currentNumberPlayersOfClub = myTeamGrid.dataSource.filter(x => x.ClubId == playerClubId).length;
-
-            if(currentNumberPlayersOfClub >= 3){
-                Swal.fire({
-                    title: 'Warning',
-                    text: 'Cannot have more than 3 players of ' + player.ClubName,
-                    icon: 'warning',
-                    confirmButtonText: 'Ok'
-                });
-
-                return false;
-            }
-
-            return isValid;
-        }
-    </script>
-}
