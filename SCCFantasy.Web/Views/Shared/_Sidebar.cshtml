@@ -60,18 +60,17 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1">
-        <!-- Dashboard -->
-        <li class="menu-item">
+        <li class="menu-item @Html.IsSelected("Home", "Index")">
             <a class="menu-link" asp-area="" asp-controller="Home" asp-action="Index">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Home</div>
+                <div>Home</div>
             </a>
         </li>
 
-        <li class="menu-item">
+        <li class="menu-item @Html.IsSelected("Team", "Index")">
             <a class="menu-link" asp-area="" asp-controller="Team" asp-action="Index">
                 <i class='menu-icon tf-icons bx bxs-t-shirt'></i>
-                <div data-i18n="Analytics">My Team</div>
+                <div>My Team</div>
             </a>
         </li>
     </ul>
