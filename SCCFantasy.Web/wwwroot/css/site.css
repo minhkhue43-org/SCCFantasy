@@ -20,3 +20,8 @@ body {
 .text-very-difficult {
     color: rgb(128, 7, 45);
 }
+
+.e-spinner-pane.e-spin-show {
+    background-color: rgba(100,100,100,0.4) !important;
+    z-index: 9999;
+}

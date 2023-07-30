@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SCCFantasy.Web.Models;
-using SCCFantasy.Services;
+using SCCFantasy.Web.Services;
 using SCCFantasy.Web.Controllers;
 using System.Diagnostics;
 

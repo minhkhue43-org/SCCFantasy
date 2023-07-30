@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SCCFantasy.ApiServices.Models.Dto
+namespace SCCFantasy.Services.Models.Dto
 {
     public class PlayerDto
     {

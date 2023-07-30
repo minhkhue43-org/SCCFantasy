@@ -1,6 +1,8 @@
 using Newtonsoft.Json.Serialization;
 using SCCFantasy.ApiServices.Api;
+using SCCFantasy.Data.Repositories;
 using SCCFantasy.Services;
+using SCCFantasy.Web.Services;
 using Syncfusion.Licensing;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,10 +24,20 @@ builder.Services.AddSession(options =>
     options.Cookie.Name = "_SCCFantasyCookie";
 });
 
+//Web
 builder.Services.AddScoped<IPlayerWebService, PlayerWebService>();
+builder.Services.AddScoped<IUserWebService, UserWebService>();
+
+//Services
 builder.Services.AddScoped<IPlayerService, PlayerService>();
+builder.Services.AddScoped<IUserService, UserService>();
+
+//Api
 builder.Services.AddScoped<IGeneralInformationApi, GeneralInformationApi>();
 builder.Services.AddScoped<IFixturesApi, FixturesApi>();
+
+//Repository
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 
