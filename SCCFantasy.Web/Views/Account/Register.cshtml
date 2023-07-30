@@ -1,6 +1,7 @@
 ﻿@model RegisterViewModel
 
 @{
+    ViewData["Title"] = "Register";
 }
 
 @section Styles{
@@ -11,60 +12,49 @@
     <div class="authentication-inner">
         <!-- Register -->
         <div class="card">
-            <div class="card-body">
+            <div class="card-body" id="authentication-div">
                 <h4 class="mb-2">Adventure starts here 🚀</h4>
-                <p class="mb-2">Please create your account and start the adventure</p>
-                <p class="mb-2 text-danger">Register feature has not been implemented yet. Just return to Login Page, input whatever you want and click Sign in</p>
+                <p class="mb-4">Please create your account and start the adventure</p>
 
-                <form id="formAuthentication" class="mb-3" asp-action="Register" asp-controller="Account" method="POST">
+                <form id="form-authentication" class="mb-3" asp-action="Register" asp-controller="Account" method="POST">
+                    <div class="text-danger validation-summary"></div>
+
                     <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text"
-                               class="form-control"
-                               id="username"
-                               name="username"
-                               placeholder="Enter your email or username"
-                               autofocus />
+                        <label asp-for="UserName" class="form-label">Username</label>
+                        <input type="text" asp-for="UserName" class="form-control"/>
+                        <span asp-validation-for="UserName" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3 form-password-toggle">
                         <div class="d-flex justify-content-between">
-                            <label class="form-label" for="password">Password</label>
+                            <label class="form-label" asp-for="Password">Password</label>
                             @* <a href="auth-forgot-password-basic.html">
                             <small>Forgot Password?</small>
                             </a>*@
                         </div>
                         <div class="input-group input-group-merge">
-                            <input type="password"
-                                   id="password"
-                                   class="form-control"
-                                   name="password"
-                                   placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                   aria-describedby="password" />
+                            <input type="password" asp-for="Password" class="form-control" aria-describedby="password" />
                             <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                         </div>
+                        <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3 form-password-toggle">
                         <div class="d-flex justify-content-between">
-                            <label class="form-label" for="ConfirmedPassword">Confirmed Password</label>
+                            <label class="form-label" asp-for="ConfirmedPassword">Confirmed Password</label>
                             @* <a href="auth-forgot-password-basic.html">
                             <small>Forgot Password?</small>
                             </a>*@
                         </div>
                         <div class="input-group input-group-merge">
-                            <input type="password"
-                                   id="ConfirmedPassword"
-                                   class="form-control"
-                                   name="ConfirmedPassword"
-                                   placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                   aria-describedby="password" />
+                            <input type="password" asp-for="ConfirmedPassword" class="form-control" aria-describedby="confirmed-password" />
                             <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                         </div>
+                        <span asp-validation-for="ConfirmedPassword" class="text-danger"></span>
                     </div>
                  
                     <div class="mb-3">
-                        <button class="btn btn-primary d-grid w-100" type="submit">Register</button>
+                        <button class="btn btn-primary d-grid w-100" type="button" data-action="register">Register</button>
                     </div>
                 </form>
 
@@ -79,3 +69,7 @@
         <!-- /Register -->
     </div>
 </div>
+
+@section Scripts{
+    <script src="~/js/pages/user-account.js" type="text/javascript"></script>
+}

@@ -45,6 +45,11 @@
     <link rel="stylesheet" href="~/lib/fontawesome/css/brands.css">
     <link rel="stylesheet" href="~/lib/fontawesome/css/solid.css">
     @await RenderSectionAsync("Styles", required: false)
+
+    <script>
+        window.serverUrl = window.location.origin;
+    </script>
+
 </head>
 
 <body>
@@ -211,6 +216,10 @@
     <!-- Page JS -->
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.form.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/common.js" asp-append-version="true"></script>
     <script src="~/lib/ej2/ej2.min.js"></script>

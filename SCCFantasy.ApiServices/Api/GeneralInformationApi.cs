@@ -1,10 +1,10 @@
 ﻿using SCCFantasy.ApiServices.Models.Api;
 using SCCFantasy.Common;
+using SCCFantasy.Common.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace SCCFantasy.ApiServices.Api
@@ -26,7 +26,7 @@ namespace SCCFantasy.ApiServices.Api
 
             string _content = await _response.Content.ReadAsStringAsync();
 
-            return JsonSerializer.Deserialize<BoostrapStaticApiModel>(_content);
+            return JsonHelper.Deserialize<BoostrapStaticApiModel>(_content);
         }
     }
 }

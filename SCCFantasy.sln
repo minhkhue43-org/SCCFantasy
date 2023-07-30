@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SCCFantasy.Web", "SCCFantas
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SCCFantasy.ApiServices", "SCCFantasy.ApiServices\SCCFantasy.ApiServices.csproj", "{8DB5CC82-0573-416C-B998-217FF70625C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCCFantasy.Services", "SCCFantasy.Services\SCCFantasy.Services.csproj", "{6F6C497F-ACC6-4017-8BDA-0D5C25DFC0A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SCCFantasy.Services", "SCCFantasy.Services\SCCFantasy.Services.csproj", "{6F6C497F-ACC6-4017-8BDA-0D5C25DFC0A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCCFantasy.Common", "SCCFantasy.Common\SCCFantasy.Common.csproj", "{8BEAA8F6-256B-4762-A301-0BD3D7B81A5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SCCFantasy.Common", "SCCFantasy.Common\SCCFantasy.Common.csproj", "{8BEAA8F6-256B-4762-A301-0BD3D7B81A5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCCFantasy.Data", "SCCFantasy.Data\SCCFantasy.Data.csproj", "{3A3B3D9A-44E1-4D49-AC02-71D4C9FF1558}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{8BEAA8F6-256B-4762-A301-0BD3D7B81A5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BEAA8F6-256B-4762-A301-0BD3D7B81A5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BEAA8F6-256B-4762-A301-0BD3D7B81A5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A3B3D9A-44E1-4D49-AC02-71D4C9FF1558}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A3B3D9A-44E1-4D49-AC02-71D4C9FF1558}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A3B3D9A-44E1-4D49-AC02-71D4C9FF1558}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A3B3D9A-44E1-4D49-AC02-71D4C9FF1558}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

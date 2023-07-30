@@ -1,9 +1,10 @@
-﻿using SCCFantasy.ApiServices.Models.Dto;
+﻿using SCCFantasy.Services.Models.Dto;
 using SCCFantasy.Common.Enums;
 using SCCFantasy.Common.Extensions;
 using SCCFantasy.Web.Models;
+using SCCFantasy.Services;
 
-namespace SCCFantasy.Services
+namespace SCCFantasy.Web.Services
 {
     public interface IPlayerWebService
     {

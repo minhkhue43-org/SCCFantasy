@@ -1,6 +1,6 @@
 ﻿using SCCFantasy.ApiServices.Api;
 using SCCFantasy.ApiServices.Models.Api;
-using SCCFantasy.ApiServices.Models.Dto;
+using SCCFantasy.Services.Models.Dto;
 using SCCFantasy.Common.Enums;
 using System;
 using System.Collections.Generic;

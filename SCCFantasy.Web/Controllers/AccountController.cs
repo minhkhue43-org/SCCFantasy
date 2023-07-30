@@ -1,16 +1,27 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.Cosmos.Serialization.HybridRow;
+using SCCFantasy.Web.Extensions;
 using SCCFantasy.Web.Models;
-using System.Security.Claims;
+using SCCFantasy.Web.Services;
 
 namespace SCCFantasy.Web.Controllers
 {
     public class AccountController : BaseController
     {
+        private readonly IUserWebService _userWebService;
+
+        public AccountController(IUserWebService userWebService)
+        {
+            _userWebService = userWebService;
+        }
+
         [HttpGet]
         public ActionResult Login()
         {
-            if (HttpContext.Session.GetString("UserName") == null)
+            var userId = HttpContext.Session.GetString("UserId");
+
+            if (string.IsNullOrEmpty(userId))
             {
                 return View("Login");
             }
@@ -23,22 +34,43 @@ namespace SCCFantasy.Web.Controllers
         [HttpGet]
         public ActionResult Register()
         {
-            if (HttpContext.Session.GetString("UserName") == null)
+            var userId = HttpContext.Session.GetString("UserId");
+
+            if (string.IsNullOrEmpty(userId))
             {
                 return View();
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Team");
             }
         }
 
         [HttpPost]
-        public ActionResult Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            if (HttpContext.Session.GetString("UserName") == null)
+            var userId = HttpContext.Session.GetString("UserId");
+
+            if (string.IsNullOrEmpty(userId))
             {
-                return RedirectToAction("UnderConstruction");
+                if (!ModelState.IsValid)
+                {
+                    return Error(ModelState.ToErrorMessages());
+                }
+
+                var registerResult = await _userWebService.Register(model);
+
+                if (registerResult.HasErrors)
+                {
+                    return Error(registerResult.Errors);
+                }
+
+                var user = registerResult.Result;
+
+                HttpContext.Session.SetString("UserName", user.UserName);
+                HttpContext.Session.SetString("UserId", user.Id);
+
+                return Success();
             }
             else
             {
@@ -49,25 +81,34 @@ namespace SCCFantasy.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            if (HttpContext.Session.GetString("UserName") == null)
-            {
-                if (ModelState.IsValid)
-                {
-                    HttpContext.Session.SetString("UserName", model.UserName);
-                    HttpContext.Session.SetString("UserId", "e366adfd-0f1a-45c0-89f9-91c070a495a1");
+            var userId = HttpContext.Session.GetString("UserId");
 
-                    return RedirectToAction("Index", "Team");
+            if (string.IsNullOrEmpty(userId))
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Error(ModelState.ToErrorMessages());
                 }
+
+                var loginResult = await _userWebService.Login(model);
+
+                if (loginResult.HasErrors)
+                {
+                    return Error(loginResult.Errors);
+                }
+
+                var user = loginResult.Result;
+
+                HttpContext.Session.SetString("UserName", user.UserName);
+                HttpContext.Session.SetString("UserId", user.Id);
+
+                return Success();
             }
             else
             {
                 return RedirectToAction("Index", "Team");
             }
-
-            return View();
         }
-
-
 
         public ActionResult Logout()
         {
