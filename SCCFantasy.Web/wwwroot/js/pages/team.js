@@ -39,8 +39,6 @@ $("#my-team-grid").on('click', '.btn[data-action=remove-player]', function (e) {
 });
 
 $("#save-my-team").on('click', function () {
-    var dataSource = myTeamGrid.dataSource;
-    toastService.success(__messages.ModifySuccessfully);
     var submitUrl = window.serverUrl + "/Team/UpdateTeam";
     var teamIds = myTeamGrid.dataSource.map(x => x.Id).join(';');
 
