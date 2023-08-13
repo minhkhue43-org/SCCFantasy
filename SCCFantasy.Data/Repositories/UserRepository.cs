@@ -22,25 +22,23 @@ namespace SCCFantasy.Data.Repositories
     public class UserRepository : BaseRepository, IUserRepository
     {
         private readonly string ContainerName = "User";
-        private readonly string PartitionKey = "User";
         private readonly Container _container;
 
-        public UserRepository() : base()
+        public UserRepository(CosmosClient cosmosClient) : base()
         {
-            var cosmosClient = new CosmosClient(this.CosmosDBEndPointUri, this.CosmosDBKey);
             Database database = cosmosClient.GetDatabase(this.DatabaseName);
             _container = database.GetContainer(ContainerName);
         }
 
         public async Task<UserEntity> AddUser(UserEntity entity)
         {
-            var result = await _container.CreateItemAsync(entity, new PartitionKey(PartitionKey));
+            var result = await _container.CreateItemAsync(entity, new PartitionKey(entity.id));
             return result.Resource;
         }
 
         public async Task<UserEntity> UpdateUser(UserEntity entity)
         {
-            var result = await _container.UpsertItemAsync(entity, new PartitionKey(PartitionKey));
+            var result = await _container.UpsertItemAsync(entity, new PartitionKey(entity.id));
             return result.Resource;
         }
 
@@ -83,7 +81,7 @@ namespace SCCFantasy.Data.Repositories
 
         public async Task<UserEntity> GetUserById(string id)
         {
-            var itemResponse = await _container.ReadItemAsync<UserEntity>(id, new PartitionKey(PartitionKey));
+            var itemResponse = await _container.ReadItemAsync<UserEntity>(id, new PartitionKey(id));
 
             return itemResponse.Resource;
         }
