@@ -1,3 +1,5 @@
+using Microsoft.Azure.Cosmos;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using SCCFantasy.ApiServices.Api;
 using SCCFantasy.Data.Repositories;
@@ -38,6 +40,27 @@ builder.Services.AddScoped<IFixturesApi, FixturesApi>();
 
 //Repository
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddSingleton<CosmosClient>(sp =>
+{
+    string cosmosDBEndPointUri; string cosmosDBKey;
+    var databaseConfigPath = Environment.CurrentDirectory + "\\databaseConfig.json";
+
+    if (File.Exists(databaseConfigPath))
+    {
+        var databaseConfigJsonString = File.ReadAllText(databaseConfigPath);
+        var databaseConfig = JsonConvert.DeserializeObject<DatabaseConfig>(databaseConfigJsonString);
+
+        cosmosDBEndPointUri = databaseConfig.CosmosDBEndPointUri;
+        cosmosDBKey = databaseConfig.CosmosDBKey;
+    }
+    else
+    {
+        cosmosDBEndPointUri = Environment.GetEnvironmentVariable("CosmosDBEndPointUri");
+        cosmosDBKey = Environment.GetEnvironmentVariable("CosmosDBKey");
+    }
+
+    return new CosmosClient(cosmosDBEndPointUri, cosmosDBKey);
+});
 
 var app = builder.Build();
 
@@ -74,3 +97,10 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+class DatabaseConfig
+{
+    public string CosmosDBEndPointUri { get; set; }
+
+    public string CosmosDBKey { get; set; }
+}

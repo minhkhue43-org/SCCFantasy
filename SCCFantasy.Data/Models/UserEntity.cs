@@ -12,8 +12,6 @@ namespace SCCFantasy.Data.Models
 
         public string Password { get; set; }
 
-        public string Category => "User";
-
         public string Team { get; set; }
 
         public string Roles { get; set; }

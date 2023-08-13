@@ -9,5 +9,6 @@ namespace SCCFantasy.Common
     public static class GlobalConstants
     {
         public static readonly string ApiPrefix = "https://fantasy.premierleague.com/api";
+        public static readonly string DatabaseName = "SCCFantasy";
     }
 }
